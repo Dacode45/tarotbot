@@ -102,6 +102,10 @@ impl TarotBotHandler {
             };
         }
         info!("calling reading!");
+        let from = get_caller_user_id(&command);
+        let user_tag = from
+            .map(|user| format!("<@{}>", user))
+            .unwrap_or(String::default());
 
         let _res = self
             .send_msg(
@@ -118,7 +122,7 @@ impl TarotBotHandler {
             Ok(res) => {
                 let text = &res.choices[0].text;
                 let _res = self
-                    .say_to(&ctx, command.channel_id, format!("{}", text))
+                    .say_to(&ctx, command.channel_id, format!("{} {}", user_tag, text))
                     .await;
             }
             Err(err) => {
