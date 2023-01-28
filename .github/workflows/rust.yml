@@ -13,7 +13,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    container: quay.io/pypa/manylinux2014_x86_64
 
     steps:
     - uses: actions/checkout@v2
@@ -26,6 +25,12 @@ jobs:
           ~/.cargo/git/db/
           target/
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+    - name: Install latest nightly
+      uses: actions-rs/toolchain@v1
+      with:
+          toolchain: nightly
+          override: true
+          components: rustfmt, clippy
     - name: Build
       uses: actions-rs/cargo@v1
       with:
