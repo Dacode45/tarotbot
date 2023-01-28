@@ -26,9 +26,11 @@ jobs:
           target/
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
     - name: Build
-      run: cargo build --verbose --release
-    # - name: Run tests
-    #   run: cargo test --verbose
+      uses: actions-rs/cargo@v1
+      with:
+        command: build
+        use-cross: true
+        args: --verbose --release --target x86_64-unknown-linux-gnu
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
       with:
