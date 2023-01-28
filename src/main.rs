@@ -20,7 +20,7 @@ use serenity::{
         interactions::{
             application_command::{
                 ApplicationCommand, ApplicationCommandInteraction,
-                ApplicationCommandInteractionDataOptionValue, ApplicationCommandOptionType,
+                ApplicationCommandInteractionDataOptionValue,
             },
             Interaction, InteractionResponseType,
         },
