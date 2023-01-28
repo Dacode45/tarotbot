@@ -1,0 +1,16 @@
+[Unit]
+Description=Tarot Bot
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+WorkingDirectory=/home/tarotbot
+ExecStart=/home/tarotbot/bin/tarotbot
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=tarotbot-bot
+Environment="RUST_LOG=tarotbot=debug"
+
+[Install]
+WantedBy=multi-user.target

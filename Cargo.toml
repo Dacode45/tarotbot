@@ -1,0 +1,37 @@
+[package]
+name = "tarotbot"
+version = "0.1.0"
+edition = "2021"
+authors = ["Dacode45 <davidrolandayeke@gmail.com>"]
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dotenv = "0.15"
+serde_json = "1.0"
+csv = "1.1"
+lazy_static = "1.4"
+serde = { version = "1", features = ["derive"] }
+rand = "0.8"
+log = "0.4"
+pretty_env_logger = "0.4"
+regex = "1.5"
+
+[dependencies.serenity]
+version = "0.10"
+default-features = false
+features = ["client", "gateway", "rustls_backend", "model", "unstable_discord_api"] 
+
+
+[dependencies.tokio]
+version = "1.0"
+features = ["macros", "rt-multi-thread"]
+
+[dependencies.reqwest]
+default-features = false
+features = ["json", "multipart", "stream"]
+version = "0.11"
+
+[dev-dependencies]
+tokio-test = "*"
