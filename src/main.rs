@@ -96,8 +96,8 @@ impl TarotBotHandler {
     async fn reading(&self, ctx: Context, command: ApplicationCommandInteraction) {
         lazy_static! {
             static ref tarot_req: gpt3::CompletionRequest = gpt3::CompletionRequest {
-                model: "text-davinci-003".to_string(),
-                prompt: "Give me a Tarot Reading".to_string(),
+                model: "gpt-3.5-turbo-instruct".to_string(),
+                prompt: "Prepend to be a tarot reader, and you have the personality of one. Give me a Tarot Reading. Keep it under 200 words.".to_string(),
                 max_tokens: 512,
             };
         }
